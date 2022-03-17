@@ -17,5 +17,5 @@ variable "vpc_id" {
 }
 
 variable "lambda_function_name" {
-  default = "RAISexecutaEMR"
+  default = "executa_emr"
 }
