@@ -121,7 +121,7 @@ def pipeline_rais():
                             '--master', 'yarn',
                             '--deploy-mode', 'cluster',
                             # verificar endereço s3 e adaptar, se necessário
-                            's3://edc-desafio-mod1-helton-tf/emr-code/pyspark/01_delta_spark_insert.py'
+                            's3://edc-desafio-mod1-helton-tf/emr-code/pyspark/job_spark.py'
                         ]
                 }
             }],
@@ -147,44 +147,44 @@ def pipeline_rais():
         )
         return True
 
-    @task
-    def upsert_delta(cid: str, success_before: bool):
-        if success_before:
-            newstep = client.add_job_flow_steps(
-                JobFlowId=cid,
-                Steps=[{
-                    'Name': 'Upsert da tabela Delta',
-                    'ActionOnFailure': "TERMINATE_CLUSTER",
-                    'HadoopJarStep': {
-                        'Jar': 'command-runner.jar',
-                        'Args': ['spark-submit',
-                                '--packages', 'io.delta:delta-core_2.12:1.0.0',
-                                # '--packages', 'io.delta:delta-core_2.12:1.1.0', 
-                                '--conf', 'spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension', 
-                                '--conf', 'spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog', 
-                                '--master', 'yarn',
-                                '--deploy-mode', 'cluster',
-                                # verificar endereço s3 e adaptar, se necessário
-                                's3://edc-desafio-mod1-helton-tf/emr-code/pyspark/02_delta_spark_upsert.py'
-                            ]
-                    }
-                }]
-            )
-            return newstep['StepIds'][0]
+    # @task
+    # def upsert_delta(cid: str, success_before: bool):
+    #     if success_before:
+    #         newstep = client.add_job_flow_steps(
+    #             JobFlowId=cid,
+    #             Steps=[{
+    #                 'Name': 'Upsert da tabela Delta',
+    #                 'ActionOnFailure': "TERMINATE_CLUSTER",
+    #                 'HadoopJarStep': {
+    #                     'Jar': 'command-runner.jar',
+    #                     'Args': ['spark-submit',
+    #                             '--packages', 'io.delta:delta-core_2.12:1.0.0',
+    #                             # '--packages', 'io.delta:delta-core_2.12:1.1.0', 
+    #                             '--conf', 'spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension', 
+    #                             '--conf', 'spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog', 
+    #                             '--master', 'yarn',
+    #                             '--deploy-mode', 'cluster',
+    #                             # verificar endereço s3 e adaptar, se necessário
+    #                             's3://edc-desafio-mod1-helton-tf/emr-code/pyspark/02_delta_spark_upsert.py'
+    #                         ]
+    #                 }
+    #             }]
+    #         )
+    #         return newstep['StepIds'][0]
 
-    @task
-    def wait_upsert_delta(cid: str, stepId: str):
-        waiter = client.get_waiter('step_complete')
+    # @task
+    # def wait_upsert_delta(cid: str, stepId: str):
+    #     waiter = client.get_waiter('step_complete')
 
-        waiter.wait(
-            ClusterId=cid,
-            StepId=stepId,
-            WaiterConfig={
-                'Delay': 30,
-                'MaxAttempts': 120
-            }
-        )
-        return True
+    #     waiter.wait(
+    #         ClusterId=cid,
+    #         StepId=stepId,
+    #         WaiterConfig={
+    #             'Delay': 30,
+    #             'MaxAttempts': 120
+    #         }
+    #     )
+    #     return True
 
 
     @task
@@ -198,9 +198,10 @@ def pipeline_rais():
     # Encadeando a pipeline
     cluid = emr_process_rais_data()
     res_emr = wait_emr_step(cluid)
-    newstep = upsert_delta(cluid, res_emr)
-    res_ba = wait_upsert_delta(cluid, newstep)
-    res_ter = terminate_emr_cluster(res_ba, cluid)
+    # newstep = upsert_delta(cluid, res_emr)
+    # res_ba = wait_upsert_delta(cluid, newstep)
+    # res_ter = terminate_emr_cluster(res_ba, cluid)
+    res_ter = terminate_emr_cluster(res_emr, cluid)
 
 
 execucao = pipeline_rais()

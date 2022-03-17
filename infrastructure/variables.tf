@@ -15,3 +15,7 @@ variable "airflow_subnet_id" {
 variable "vpc_id" {
   default = "vpc-0cd132980d503447a"
 }
+
+variable "lambda_function_name" {
+  default = "RAISexecutaEMR"
+}
