@@ -1,0 +1,6 @@
+*.csv
+.DS_Store
+.terraform
+.terraform.lock.hcl
+helton-igti-teste.pem
+airflow_variables.json
