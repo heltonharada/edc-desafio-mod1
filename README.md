@@ -16,20 +16,22 @@ Exercitar os seguintes conceitos trabalhados no Módulo:
 
 Enunciado:
 
-    Você é Engenheiro(a) de Dados de uma. A Startup está expandindo seu negócio para
-outras áreas do Brasil. A principal fonte de dados para entender o cenário econômico e
-de trabalho atual é a RAIS, uma base de dados desafiadora!
-    Você deve fazer a ingestão da RAIS 2020 em uma estrutura de Data Lake na AWS (ou em
-outro provedor de sua escolha). Depois disso, você deve utilizar alguma tecnologia de
-Big Data para converter os dados para o formato parquet. Em seguida, disponibilize os
-dados para consulta no AWS Athena (ou outra engine de Data Lake de outra nuvem ou
-no BigQuery, no caso do Google Cloud) e faça uma consulta para demonstrar a
-disponibilidade dos dados. Por fim, utilize a ferramenta de Big Data ou a engine de Data
-Lake para realizar investigações nos dados e responder às perguntas do desafio.
-    Atenção! Toda a infraestrutura em nuvem deve ser implantada utilizando o Terraform
-(ou outra solução de IaC de sua escolha) e esteiras de deploy no Github (ou Gitlab, ou
-Bitbucket, ou outro de sua escolha). O dado que vamos trabalhar no desafio é grande.
+    Você é Engenheiro(a) de Dados de uma. A Startup está expandindo seu negócio para outras áreas do Brasil.
+    
+    A principal fonte de dados para entender o cenário econômico e de trabalho atual é a RAIS, uma base de dados desafiadora!
+    
+    Você deve fazer a ingestão da RAIS 2020 em uma estrutura de Data Lake na AWS (ou em outro provedor de sua escolha).
+    
+    Depois disso, você deve utilizar alguma tecnologia de Big Data para converter os dados para o formato parquet.
+    
+    Em seguida, disponibilize os dados para consulta no AWS Athena (ou outra engine de Data Lake de outra nuvem ou no BigQuery, no caso do Google Cloud) e faça uma consulta para demonstrar a disponibilidade dos dados.
+    
+    Por fim, utilize a ferramenta de Big Data ou a engine de DataLake para realizar investigações nos dados e responder às perguntas do desafio.
+
+    Atenção! Toda a infraestrutura em nuvem deve ser implantada utilizando o Terraform (ou outra solução de IaC de sua escolha) e esteiras de deploy no Github (ou Gitlab, ou Bitbucket, ou outro de sua escolha). O dado que vamos trabalhar no desafio é grande.
+    
     Evite fazer consultas desnecessárias.
+    
     DIVIRTA-SE!
 
 Atividades:
