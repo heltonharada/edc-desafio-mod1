@@ -105,8 +105,10 @@ rais = (
 # Converte para parquet
 (
     rais
+    .coalesce(50)
     .write
     .mode("overwrite")
+    .partitionBy('ano', 'uf')
     .format("parquet")
     .save("s3://edc-desafio-mod1-helton-tf/staging-zone/")
 )
