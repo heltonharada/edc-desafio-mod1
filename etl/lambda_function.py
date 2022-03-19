@@ -96,7 +96,7 @@ def handler(event, context):
                                     '--conf', 'spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog',
                                     '--master', 'yarn',
                                     '--deploy-mode', 'cluster',
-                                    's3://edc-desafio-mod1-helton-tf/emr-code/pyspark/job_spark.py'
+                                    's3://edc-desafio-mod1-helton-tf/emr-code/pyspark/job_spark_from_tf.py'
                                 ]
                             }
                 }],
