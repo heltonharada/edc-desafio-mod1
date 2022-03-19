@@ -45,8 +45,8 @@ def pipeline_rais():
             VisibleToAllUsers=True,
             # verificar endereço s3 e adaptar, se necessário
             LogUri='s3://edc-desafio-mod1-helton-tf/emr-logs',
-            # ReleaseLabel='emr-6.3.0',
-            ReleaseLabel='emr-6.5.0',
+            ReleaseLabel='emr-6.3.0',
+            # ReleaseLabel='emr-6.5.0',
             Instances={
                 'InstanceGroups': [
                     {
@@ -114,8 +114,8 @@ def pipeline_rais():
                 'HadoopJarStep': {
                     'Jar': 'command-runner.jar',
                     'Args': ['spark-submit',
-                            # '--packages', 'io.delta:delta-core_2.12:1.0.0',
-                            '--packages', 'io.delta:delta-core_2.12:1.1.0', 
+                            '--packages', 'io.delta:delta-core_2.12:1.0.0',
+                            # '--packages', 'io.delta:delta-core_2.12:1.1.0', 
                             '--conf', 'spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension', 
                             '--conf', 'spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog', 
                             '--master', 'yarn',

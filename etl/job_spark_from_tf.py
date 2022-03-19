@@ -110,5 +110,5 @@ rais = (
     .mode("overwrite")
     # .partitionBy('ano', 'uf')
     .format("parquet")
-    .save("s3://edc-desafio-mod1-helton-tf/staging-zone/rais")
+    .save("s3://edc-desafio-mod1-helton-tf/staging-zone/rais/")
 )
