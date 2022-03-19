@@ -121,7 +121,7 @@ def pipeline_rais():
                             '--master', 'yarn',
                             '--deploy-mode', 'cluster',
                             # verificar endereço s3 e adaptar, se necessário
-                            's3://edc-desafio-mod1-helton-tf/emr-code/pyspark/job_spark.py'
+                            's3://edc-desafio-mod1-helton-tf/emr-code/pyspark/job_spark_from_tf.py'
                         ]
                 }
             }],
