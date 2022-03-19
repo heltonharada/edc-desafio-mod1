@@ -1,4 +1,4 @@
-resource "aws_s3_object" "job_spark" {
+resource "aws_s3_object" "codigo_spark" {
   # bucket = aws_s3_bucket.datalake.id
   bucket = aws_s3_bucket.dl.id
 

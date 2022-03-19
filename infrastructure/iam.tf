@@ -1,5 +1,9 @@
+#################
+## LAMBDA ROLE ##
+#################
+
 resource "aws_iam_role" "lambda" {
-  name = "IGTILambdaRole"
+  name = "RaisLambdaRole"
 
   assume_role_policy = <<EOF
 {
@@ -27,7 +31,7 @@ EOF
 
 
 resource "aws_iam_policy" "lambda" {
-  name        = "IGTIAWSLambdaBasicExecutionRolePolicy"
+  name        = "RaisAWSLambdaBasicExecutionRolePolicy"
   path        = "/"
   description = "Provides write permissions to CloudWatch Logs, S3 buckets and EMR Steps"
 
@@ -79,8 +83,8 @@ resource "aws_iam_role_policy_attachment" "lambda_attach" {
 ## GLUE ROLE ##
 ###############
 
-resource "aws_iam_role" "glue_role" {
-  name = "IGTIGlueCrawlerRole"
+resource "aws_iam_role" "glue_rais_role" {
+  name = "RAISGlueCrawlerRole"
 
   assume_role_policy = <<EOF
 {
@@ -106,8 +110,8 @@ EOF
 }
 
 
-resource "aws_iam_policy" "glue_policy" {
-  name        = "IGTIAWSGlueServiceRole"
+resource "aws_iam_policy" "glue_rais_policy" {
+  name        = "RAISAWSGlueServiceRole"
   path        = "/"
   description = "Policy for AWS Glue service role which allows access to related services including EC2, S3, and Cloudwatch Logs"
 
@@ -196,7 +200,7 @@ EOF
 }
 
 
-resource "aws_iam_role_policy_attachment" "glue_attach" {
-  role       = aws_iam_role.glue_role.name
-  policy_arn = aws_iam_policy.glue_policy.arn
+resource "aws_iam_role_policy_attachment" "glue_rais_attach" {
+  role       = aws_iam_role.glue_rais_role.name
+  policy_arn = aws_iam_policy.glue_rais_policy.arn
 }
