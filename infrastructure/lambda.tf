@@ -1,4 +1,4 @@
-resource "aws_lambda_function" "executa_emr" {
+resource "aws_lambda_function" "executa_emr_rais" {
   filename      = "lambda_function_payload.zip"
   function_name = var.lambda_function_name
   role          = aws_iam_role.lambda.arn
